@@ -1,0 +1,29 @@
+{
+  "name": "vanilla-hcaptcha",
+  "description": "Vanilla Web Component for hCaptcha. 0 dependencies. <1kb gzipped.",
+  "version": "0.0.1",
+  "main": "dist/hcaptcha-component.min.js",
+  "author": {
+    "name": "Sergiu Danalachi <danalachi.sergiu@gmail.com>",
+    "url": "https://github.com/DSergiu"
+  },
+  "homepage": "https://github.com/DSergiu/vanilla-hcaptcha",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "build": "uglifyjs hcaptcha.js -o ./dist/hcaptcha-component.min.js --compress --mangle",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "26.1.0",
+    "uglify-es": "3.3.9"
+  },
+  "keywords": [
+    "hcaptcha",
+    "vanilla",
+    "js",
+    "web component",
+    "captcha",
+    "stop bots"
+  ]
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo - Vanilla hCaptcha Web Component</title>
+</head>
+<body>
+
+<div>Open the console!</div>
+
+<script src="/dist/hcaptcha-component.min.js"></script>
+
+<h-captcha id="signupCaptcha"
+           site-key="10000000-ffff-ffff-ffff-000000000001"
+           size="normal"
+           dark
+           tabindex="0"></h-captcha>
+
+<script>
+    const signupCaptcha = document.getElementById('signupCaptcha');
+
+    signupCaptcha.addEventListener('loaded', () => {
+        console.log('hCaptcha Component Loaded');
+        // Component loads https://hcaptcha.com/1/api.js async
+        // Safe to show captcha once component was loaded
+        signupCaptcha.render();
+    });
+    signupCaptcha.addEventListener('verified', (e) => {
+        console.log('verified event', { key: e.key });
+    });
+    signupCaptcha.addEventListener('expired', () => {
+        console.log('expired event');
+    });
+    signupCaptcha.addEventListener('error', (e) => {
+        console.log('error event', { error: e.error });
+    });
+</script>
+</body>
+</html>

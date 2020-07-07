@@ -1,7 +1,7 @@
 {
   "name": "vanilla-hcaptcha",
   "description": "Vanilla Web Component for hCaptcha. 0 dependencies. <1kb gzipped.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/hcaptcha-component.min.js",
   "author": {
     "name": "Sergiu Danalachi <danalachi.sergiu@gmail.com>",
@@ -23,6 +23,7 @@
     "hcaptcha",
     "stopbots",
     "webcomponent",
+    "client",
     "vanilla",
     "vanilla.js",
     "vue",

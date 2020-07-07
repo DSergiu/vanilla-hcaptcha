@@ -1,6 +1,6 @@
 # hCaptcha - Vanilla Web Component
 
-**0** dependencies. **<1kb** gzipped. Integrates well with Vue.JS.
+**0** dependencies. **<1kb** gzipped. Integrates well with Vue.JS, React, Angular, etc.
 
 ## Install
 ```
@@ -10,76 +10,126 @@ yarn add vanilla-hcaptcha
 <script src="https://cdn.jsdelivr.net/npm/vanilla-hcaptcha"></script>
 ```
 
-## Usage Vue.JS
+## Usage 
 
-#### main.js
-Import once in application. Ignore the custom element.
-```
-import "vanilla-hcaptcha";
+Being a vanilla web component, it is relatively [easy](https://custom-elements-everywhere.com) to integrate in mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See below some examples.
 
-Vue.config.ignoredElements = [
-  "h-captcha"
-];
-```
 
-#### Integrate in your component
-```
-<template>
-    ...
+### Vue.JS
+
+1. Import once in application (`main.js`). Ignore the custom element.
+    ```
+    import "vanilla-hcaptcha";
+    
+    Vue.config.ignoredElements = [
+      "h-captcha"
+    ];
+    ```
+
+2. Integrate in your component
+    ```
+    <template>
+        ...
+        <h-captcha id="signupCaptcha"
+                   site-key="10000000-ffff-ffff-ffff-000000000001"
+                   size="normal"
+                   dark
+                   tabindex="0"
+                   @loaded="onCaptchaLoaded"
+                   @verified="onCaptchaVerified"
+                   @expired="onCaptchaExpired"
+                   @error="onCaptchaError" />
+    </template>
+    
+    export default {
+        name: ...
+        methods: {
+            onCaptchaLoaded(e) {
+              console.log("Captcha is loaded");
+              e.target.render(); // Show captcha
+            },
+            onCaptchaVerified(e) {
+              console.log("Captcha is verified", { key: e.key });
+            },
+            onCaptchaExpired() {
+              console.log("The verified captcha expired");
+            },
+            onCaptchaError(e) {
+              console.log("Captcha error", { error: e.error });
+            }
+        }
+    }
+    ```
+    
+
+### React.JS
+
+1. Import once in application (`index.js`).
+    ```
+    import 'vanilla-hcaptcha';
+    ```
+
+2. Integrate in your component
+    ```
+   componentDidMount() {
+       const signupCaptcha = document.getElementById('signupCaptcha');
+       signupCaptcha.addEventListener('loaded', () => {
+         signupCaptcha.render(); // Show captcha
+       });
+       signupCaptcha.addEventListener('verified', (e) => {
+         console.log('verified event', { key: e.key });
+       });
+       signupCaptcha.addEventListener('expired', () => {
+         console.log('expired event');
+       });
+       signupCaptcha.addEventListener('error', (e) => {
+         console.log('error event', { error: e.error });
+       });
+   }
+   
+   render() {
+        return (
+            ...
+            <h-captcha id="signupCaptcha"
+                       site-key="10000000-ffff-ffff-ffff-000000000001"
+                       size="normal"
+                       dark
+                       tabindex="0"
+                       onLoaded="onCaptchaLoaded"
+                       onVerified="onCaptchaVerified"
+                       onExpired="onCaptchaExpired"
+                       onError="onCaptchaError" />
+            ...
+        );
+    }
+    ```
+    
+
+### Vanilla.JS
+
+1. 
+    ```
     <h-captcha id="signupCaptcha"
                site-key="10000000-ffff-ffff-ffff-000000000001"
                size="normal"
                dark
-               tabindex="0"
-               @loaded="onCaptchaLoaded"
-               @verified="onCaptchaVerified"
-               @expired="onCaptchaExpired"
-               @error="onCaptchaError" />
-</template>
-
-export default {
-    name: ...
-    methods: {
-        onCaptchaLoaded(e) {
-          console.log("Captcha is loaded");
-          e.target.render(); // Show captcha
-        },
-        onCaptchaVerified(e) {
-          console.log("Captcha is verified", { key: e.key });
-        },
-        onCaptchaExpired() {
-          console.log("The verified captcha expired");
-        },
-        onCaptchaError(e) {
-          console.log("Captcha error", { error: e.error });
-        }
-    }
-}
-```
-
-## Usage Vanilla.JS
-```
-<h-captcha id="signupCaptcha"
-           site-key="10000000-ffff-ffff-ffff-000000000001"
-           size="normal"
-           dark
-           tabindex="0" />
-
-const signupCaptcha = document.getElementById('signupCaptcha');
-
-signupCaptcha.addEventListener('loaded', () => {
-    signupCaptcha.render(); // Show captcha
-});
-signupCaptcha.addEventListener('verified', (e) => {
-    console.log('verified event', { key: e.key });
-});
-signupCaptcha.addEventListener('expired', () => {
-    console.log('expired event');
-});
-signupCaptcha.addEventListener('error', (e) => {
-    console.log('error event', { error: e.error });
-});
-```
+               tabindex="0" />
+    
+    const signupCaptcha = document.getElementById('signupCaptcha');
+    
+    signupCaptcha.addEventListener('loaded', () => {
+        signupCaptcha.render(); // Show captcha
+    });
+    signupCaptcha.addEventListener('verified', (e) => {
+        console.log('verified event', { key: e.key });
+    });
+    signupCaptcha.addEventListener('expired', () => {
+        console.log('expired event');
+    });
+    signupCaptcha.addEventListener('error', (e) => {
+        console.log('error event', { error: e.error });
+    });
+    ```
 
 ## Docs
 It loads `hcaptcha.min.js` if not already present on dom.

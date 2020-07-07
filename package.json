@@ -1,7 +1,7 @@
 {
   "name": "vanilla-hcaptcha",
   "description": "Vanilla Web Component for hCaptcha. 0 dependencies. <1kb gzipped.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/hcaptcha-component.min.js",
   "author": {
     "name": "Sergiu Danalachi <danalachi.sergiu@gmail.com>",
@@ -19,13 +19,15 @@
     "uglify-es": "3.3.9"
   },
   "keywords": [
-    "hcaptcha",
-    "vanilla",
-    "js",
-    "web component",
     "captcha",
-    "stop bots",
+    "hcaptcha",
+    "stopbots",
+    "webcomponent",
+    "vanilla",
+    "vanilla.js",
     "vue",
-    "vue.js"
+    "vue.js",
+    "react",
+    "react.js"
   ]
 }

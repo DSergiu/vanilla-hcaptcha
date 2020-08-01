@@ -16,6 +16,9 @@
            dark
            tabindex="0"></h-captcha>
 
+<button onclick="resetHCaptcha()">RESET</button>
+<button onclick="removeHCaptcha()">REMOVE</button>
+
 <script>
     const signupCaptcha = document.getElementById('signupCaptcha');
 
@@ -34,6 +37,14 @@
     signupCaptcha.addEventListener('error', (e) => {
         console.log('error event', { error: e.error });
     });
+
+    function resetHCaptcha() {
+        signupCaptcha.reset();
+    }
+
+    function removeHCaptcha() {
+        signupCaptcha.remove();
+    }
 </script>
 </body>
 </html>

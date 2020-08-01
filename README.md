@@ -142,6 +142,13 @@ Being a vanilla web component, it is relatively [easy](https://custom-elements-e
 |`expired`|`null`|Emitted when a captcha was verified but it expired.|
 |`error`|`error`|Emitted when an error happened.|
 
+#### Methods
+
+|Method|Description|
+|---|---|
+|`reset()`|Resets the hCaptcha which requires user to fill captcha again.|
+|`remove()`|Removes the component from DOM.|
+
 
 ## Develop & Test
 

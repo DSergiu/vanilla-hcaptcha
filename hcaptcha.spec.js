@@ -10,7 +10,9 @@ describe('hCaptcha Vanilla Web Component', () => {
                 spyOptions = opt;
                 return mockCaptchaId;
             },
-            execute: () => {}
+            execute: () => {},
+            reset: () => {},
+            remove: () => {}
         };
         document.body.innerHTML = `
             <h-captcha id="signupCaptcha"
@@ -51,5 +53,21 @@ describe('hCaptcha Vanilla Web Component', () => {
             done();
         });
         spyOptions['expired-callback']();
+    });
+
+    test('Proxy reset method', () => {
+        const spyReset = jest.spyOn(window.hcaptcha, 'reset');
+        const signupCaptcha = document.getElementById('signupCaptcha');
+        signupCaptcha.reset();
+        expect(spyReset).toHaveBeenCalledWith(mockCaptchaId);
+        spyReset.mockRestore();
+    });
+
+    test('Proxy remove method', () => {
+        const spyRemove = jest.spyOn(window.hcaptcha, 'remove');
+        const signupCaptcha = document.getElementById('signupCaptcha');
+        signupCaptcha.remove();
+        expect(spyRemove).toHaveBeenCalledWith(mockCaptchaId);
+        spyRemove.mockRestore();
     });
 });

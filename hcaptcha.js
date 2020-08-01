@@ -33,16 +33,25 @@ class HCaptcha extends HTMLElement {
                 "expired-callback": () => {
                     const event = createEvent('expired');
                     this.dispatchEvent(event);
+                    this.reset();
                 },
                 "error-callback": (error) => {
                     const event = createEvent('error');
                     event.error = error;
                     this.dispatchEvent(event);
+                    this.reset();
                 }
             }
             const hcaptchaId = window.hcaptcha.render(this, opt);
             this.render = () => {
                 window.hcaptcha.execute(hcaptchaId);
+            };
+            this.reset = () => {
+                window.hcaptcha.reset(hcaptchaId);
+            };
+            this.remove = () => {
+                super.remove();
+                window.hcaptcha.remove(hcaptchaId);
             };
             const event = createEvent('loaded');
             event.hcaptchaId = hcaptchaId;

@@ -17,6 +17,13 @@ yarn add vanilla-hcaptcha
 Being a vanilla web component, it is relatively [easy](https://custom-elements-everywhere.com) to integrate in mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See below some examples.
 
 
+* [Vue.JS](#vuejs)  
+* [React](#reactjs)  
+* [Angular 2+](#angular)  
+* [Angular.JS](#angularjs)  
+* [Vanilla](#vanillajs)  
+
+
 ### Vue.JS
 > Example: display invisible hCaptcha and render programmatically.
 
@@ -96,6 +103,42 @@ Being a vanilla web component, it is relatively [easy](https://custom-elements-e
     
    ```
 
+### Angular.JS
+> Example: display compact hCaptcha with dark theme.
+
+1.
+   ```html
+   <!doctype html>
+   <html ng-app="angularjsApp">
+   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vanilla-hcaptcha"></script>
+   
+      <script>
+         angular.module('angularjsApp', [])
+                 .controller('ExampleController', function () {
+                    this.siteKey = "10000000-ffff-ffff-ffff-000000000001";
+                    this.onCaptchaVerified = function (e) {
+                       console.log('verified event', { key: e.key });
+                    };
+                    this.onCaptchaError = function (e) {
+                       console.log('error event', { error: e.error });
+                    };
+                 });
+      </script>
+   </head>
+   <body>
+   <div ng-controller="ExampleController as ctrl">
+      <h-captcha site-key="{{ctrl.siteKey}}"
+                 size="compact"
+                 dark
+                 ng-on-verified="ctrl.onCaptchaVerified($event)"
+                 ng-on-error="ctrl.onCaptchaError($event)"
+      ></h-captcha>
+   </div>
+   </body>
+   </html>
+   ```
 
 ### Vanilla.JS
 > Example: display normal size hCaptcha accessible by keyboard (see [tabindex](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)). 

@@ -8,14 +8,16 @@
 
 <div>Open the console!</div>
 
-<script src="/dist/hcaptcha-component.min.js"></script>
+<script src="./dist/hcaptcha-component.min.js"></script>
 
 <h-captcha id="signupCaptcha"
            site-key="10000000-ffff-ffff-ffff-000000000001"
            size="normal"
-           dark
+           theme="dark"
+           reportapi="http://example.com"
            tabindex="0"></h-captcha>
 
+<button onclick="executeHCaptcha()">EXECUTE</button>
 <button onclick="resetHCaptcha()">RESET</button>
 <button onclick="removeHCaptcha()">REMOVE</button>
 
@@ -25,8 +27,8 @@
     signupCaptcha.addEventListener('loaded', () => {
         console.log('hCaptcha Component Loaded');
         // Component loads https://hcaptcha.com/1/api.js async
-        // Safe to show captcha once component was loaded
-        signupCaptcha.render();
+        // Safe to call `execute` once component is loaded
+        // signupCaptcha.execute();
     });
     signupCaptcha.addEventListener('verified', (e) => {
         console.log('verified event', { key: e.key });
@@ -37,6 +39,10 @@
     signupCaptcha.addEventListener('error', (e) => {
         console.log('error event', { error: e.error });
     });
+
+    function executeHCaptcha() {
+        signupCaptcha.execute();
+    }
 
     function resetHCaptcha() {
         signupCaptcha.reset();

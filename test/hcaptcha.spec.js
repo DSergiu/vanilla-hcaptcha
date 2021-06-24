@@ -1,7 +1,9 @@
-require('./dist/hcaptcha-component.min.js');
+require('../dist/hcaptcha-component.min.js');
 
 describe('hCaptcha Vanilla Web Component', () => {
     const mockCaptchaId = 42069;
+    const mockToken = 'mock-hcaptcha-token';
+    const mockEkey = 'mock-hcaptcha-ekey';
     let spyOptions = null;
 
     beforeEach(() => {
@@ -10,6 +12,8 @@ describe('hCaptcha Vanilla Web Component', () => {
                 spyOptions = opt;
                 return mockCaptchaId;
             },
+            getResponse: () => (mockToken),
+            getRespKey: () => (mockEkey),
             execute: () => {},
             reset: () => {},
             remove: () => {}
@@ -22,19 +26,20 @@ describe('hCaptcha Vanilla Web Component', () => {
     test('Loaded event emission and set of hcaptchaId', () => {
         const spyExecute = jest.spyOn(window.hcaptcha, 'execute');
         const signupCaptcha = document.getElementById('signupCaptcha');
-        signupCaptcha.render();
+        signupCaptcha.execute();
         expect(spyExecute).toHaveBeenCalledWith(mockCaptchaId);
         spyExecute.mockRestore();
     });
 
     test('Verified event emission', (done) => {
-        const mockReturnKey = 'mock-hcaptcha-key';
         const signupCaptcha = document.getElementById('signupCaptcha');
         signupCaptcha.addEventListener('verified', (e) => {
-            expect(e.key).toBe(mockReturnKey);
+            expect(e.key).toBe(mockToken);
+            expect(e.token).toBe(mockToken);
+            expect(e.eKey).toBe(mockEkey);
             done();
         });
-        spyOptions.callback(mockReturnKey);
+        spyOptions.callback();
     });
 
     test('Error event emission', (done) => {

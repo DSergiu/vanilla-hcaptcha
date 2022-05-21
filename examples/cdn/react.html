@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo hCaptcha Web Component - React</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/vanilla-hcaptcha" async defer></script>-->
+    <script src="/node_modules/vanilla-hcaptcha/dist/index.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+    class Example extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                sitekey: "781559eb-513a-4bae-8d29-d4af340e3624",
+                token: "",
+            };
+            this.captchaRef = React.createRef();
+        }
+
+        componentDidMount() {
+            this.captchaRef.current.addEventListener('verified', e => {
+                console.log('Verified: ', { token: e.token, eKey: e.eKey});
+                this.setState({
+                    ...this.state,
+                    token: e.token
+                })
+            });
+        }
+
+        render() {
+            return (
+                <div>
+                    {this.state.token}
+                    <div>size: normal, theme: dark</div>
+                    <h-captcha
+                        ref={this.captchaRef}
+                        sitekey={this.state.sitekey}
+                        host="example.com"
+                        size="normal"
+                        theme="dark"
+                    />
+                </div>
+            );
+        }
+    }
+
+    function Hello() {
+        const sitekey = "10000000-ffff-ffff-ffff-000000000001";
+        let token = "";
+
+        function onVerified(e) {
+
+        }
+    }
+
+    ReactDOM.render(<Example />, document.getElementById('example'))
+</script>
+
+</body>
+</html>

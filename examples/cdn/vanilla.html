@@ -2,36 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Demo - Vanilla hCaptcha Web Component</title>
+    <title>Demo hCaptcha Web Component - Vanilla</title>
 </head>
 <body>
 
 <div>Open the console!</div>
 
-<script src="./dist/hcaptcha-component.min.js"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/vanilla-hcaptcha" async defer></script>-->
+<script src="/node_modules/vanilla-hcaptcha/dist/index.min.js"></script>
 
 <h-captcha id="signupCaptcha"
-           site-key="10000000-ffff-ffff-ffff-000000000001"
+           site-key="781559eb-513a-4bae-8d29-d4af340e3624"
+           host="example.com"
            size="normal"
            theme="dark"
-           reportapi="http://example.com"
            tabindex="0"></h-captcha>
 
 <button onclick="executeHCaptcha()">EXECUTE</button>
 <button onclick="resetHCaptcha()">RESET</button>
-<button onclick="removeHCaptcha()">REMOVE</button>
 
 <script>
     const signupCaptcha = document.getElementById('signupCaptcha');
 
     signupCaptcha.addEventListener('loaded', () => {
         console.log('hCaptcha Component Loaded');
-        // Component loads https://hcaptcha.com/1/api.js async
         // Safe to call `execute` once component is loaded
         // signupCaptcha.execute();
     });
     signupCaptcha.addEventListener('verified', (e) => {
-        console.log('verified event', { key: e.key });
+        console.log('verified event', { token: e.token, eKey: e.eKey });
     });
     signupCaptcha.addEventListener('expired', () => {
         console.log('expired event');
@@ -46,10 +45,6 @@
 
     function resetHCaptcha() {
         signupCaptcha.reset();
-    }
-
-    function removeHCaptcha() {
-        signupCaptcha.remove();
     }
 </script>
 </body>

@@ -1,36 +1,29 @@
 {
   "name": "vanilla-hcaptcha",
   "description": "Vanilla Web Component for hCaptcha. 0 dependencies. <1kb gzipped.",
-  "version": "1.0.0-alpha",
-  "main": "dist/hcaptcha-component.min.js",
+  "version": "1.0.0",
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "examples/*"
+    ],
+    "nohoist": [
+      "vanilla-hcaptcha"
+    ]
+  },
   "author": {
     "name": "Sergiu Danalachi <danalachi.sergiu@gmail.com>",
     "url": "https://github.com/DSergiu"
   },
-  "homepage": "https://github.com/DSergiu/vanilla-hcaptcha",
-  "private": false,
+  "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "rollup -c -w",
-    "build": "rollup -c",
-    "test": "jest"
+    "dev": "lerna run dev --stream",
+    "build": "lerna run build --stream",
+    "test": "lerna run test --stream"
   },
   "devDependencies": {
-    "jest": "^26.6.3",
-    "rollup": "^2.52.2",
-    "rollup-plugin-terser": "^7.0.2"
-  },
-  "keywords": [
-    "captcha",
-    "hcaptcha",
-    "stopbots",
-    "webcomponent",
-    "client",
-    "vanilla",
-    "vanilla.js",
-    "vue",
-    "vue.js",
-    "react",
-    "react.js"
-  ]
+    "lerna": "^4.0.0",
+    "serve": "^13.0.2"
+  }
 }

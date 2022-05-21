@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Demo hCaptcha Web Component - Vue 2</title>
+    <script src="https://unpkg.com/vue@2.6.0"></script>
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/vanilla-hcaptcha"></script>-->
+    <script src="/node_modules/vanilla-hcaptcha/dist/index.min.js"></script>
+</head>
+<body>
+<div id="root">
+    {{ token }}
+
+    <div style="margin-top: 40px">size: normal, theme: dark</div>
+    <h-captcha
+            ref="captcha1"
+            host="example.com"
+            :sitekey="sitekey"
+            size="normal"
+            theme="dark"
+            @verified="onVerify"
+            @expired="onExpire"
+            @challenge-expired="onChallengeExpire"
+            @error="onError"
+    ></h-captcha>
+    <button @click="$refs.captcha1.reset()">Reset hCaptcha</button>
+
+
+    <div style="margin-top: 20px">size: compact, theme: light</div>
+    <h-captcha
+            host="example.com"
+            :sitekey="sitekey"
+            size="compact"
+            theme="light"
+            @verified="onVerify"
+            @expired="onExpire"
+            @challenge-expired="onChallengeExpire"
+            @error="onError"
+    ></h-captcha>
+
+    <div style="margin-top: 20px">size: invisible</div>
+    <h-captcha
+            ref="invCaptcha"
+            host="example.com"
+            :sitekey="sitekey"
+            size="invisible"
+            theme="light"
+            @verified="onVerify"
+            @expired="onExpire"
+            @challenge-expired="onChallengeExpire"
+            @error="onError"
+    ></h-captcha>
+    <button @click="$refs.invCaptcha.execute()">Trigger invisible hCaptcha</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                sitekey: "781559eb-513a-4bae-8d29-d4af340e3624",
+                token: ""
+            };
+        },
+        methods: {
+            onVerify(e) {
+                console.log('Verified: ', { token: e.token, eKey: e.eKey});
+                this.token = e.token;
+            },
+            onExpire() {
+                console.log('Token expired')
+            },
+            onChallengeExpire() {
+                console.log('Challenge expired')
+            },
+            onError(err) {
+                console.log('Captcha Error', err)
+            }
+        }
+    })
+</script>
+</body>
+</html>

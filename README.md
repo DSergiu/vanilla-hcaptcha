@@ -1,17 +1,26 @@
 # hCaptcha - Vanilla Web Component
+A Vanilla Web Component wrapper for [hCaptcha](https://docs.hcaptcha.com/).
+It allows for easy integration with hCaptcha in many modern web frameworks.
 
 <img width="300px" src="https://assets-global.website-files.com/5c73e7ea3f8bb2a85d2781db/5c73e7ea3f8bb23b4c278261_hcaptcha-logo-landscape.svg" alt="hCaptcha logo" title="hCaptcha logo" />  
 
 **0** dependencies. **<1kb** gzipped. Integrates well with Vue.JS, React, Angular, etc.
 
+[Install](#install) | [Usage](#usage) | [Attributes](#attributes) | [Events](#events) | [Methods](#methods)
+
 ## Install
 
+Use your favorite package manager:
 ```bash
 yarn add vanilla-hcaptcha
 ```
 
-```html
+```bash
+npm install vanilla-hcaptcha
+```
 
+Or via cdn:
+```html
 <script src="https://cdn.jsdelivr.net/npm/vanilla-hcaptcha"></script>
 ```
 
@@ -25,6 +34,7 @@ mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See 
 * [Angular 2+](#angular)
 * [Angular.JS](#angularjs)
 * [Vanilla](#vanillajs)
+* You can find more examples in the `<root>/examples/cdn` directory.
 
 ### Vue.JS
 
@@ -41,12 +51,11 @@ mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See 
 2. Add handling methods
     ```js
     methods: {
-        onCaptchaLoaded(e) {
-          console.log("Captcha is loaded");
-          e.target.render(); // Show captcha programmatically
+        onError(e) {
+          console.log('hCaptcha error: ', e);
         },
         onCaptchaVerified(e) {
-          console.log("Captcha is verified", { key: e.key });
+          console.log("Captcha is verified", { token: e.token, eKey: e.eKey });
         }
     }
     ```
@@ -55,9 +64,9 @@ mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See 
     ```html
     <template>
         ...
-        <h-captcha site-key="10000000-ffff-ffff-ffff-000000000001"
+        <h-captcha site-key="781559eb-513a-4bae-8d29-d4af340e3624"
                    size="invisible"
-                   @loaded="onCaptchaLoaded"
+                   @error="onError"
                    @verified="onCaptchaVerified"></h-captcha>
         ...
     </template>
@@ -77,7 +86,7 @@ mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See 
    componentDidMount() {
        const signupCaptcha = document.getElementById('signupCaptcha');
        signupCaptcha.addEventListener('verified', (e) => {
-         console.log('verified event', { key: e.key });
+         console.log('verified event', { token: e.token });
        });
    }
    ```
@@ -85,7 +94,7 @@ mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See 
 3. Integrate in your html template
    ```html
     <h-captcha id="signupCaptcha"
-               site-key="10000000-ffff-ffff-ffff-000000000001"
+               site-key="781559eb-513a-4bae-8d29-d4af340e3624"
                size="normal"
                theme="dark"></h-captcha>
    ```
@@ -121,9 +130,9 @@ mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See 
     <script>
         angular.module('angularjsApp', [])
                 .controller('ExampleController', function () {
-                    this.siteKey = "10000000-ffff-ffff-ffff-000000000001";
+                    this.siteKey = "781559eb-513a-4bae-8d29-d4af340e3624";
                     this.onCaptchaVerified = function (e) {
-                        console.log('verified event', {key: e.key});
+                        console.log('verified event', {token: e.token});
                     };
                     this.onCaptchaError = function (e) {
                         console.log('error event', {error: e.error});
@@ -153,7 +162,7 @@ mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See 
 <script src="https://cdn.jsdelivr.net/npm/vanilla-hcaptcha"></script>
 
 <h-captcha id="signupCaptcha"
-           site-key="10000000-ffff-ffff-ffff-000000000001"
+           site-key="781559eb-513a-4bae-8d29-d4af340e3624"
            size="normal"
            tabindex="0"></h-captcha>
 
@@ -161,7 +170,7 @@ mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See 
     const signupCaptcha = document.getElementById('signupCaptcha');
 
     signupCaptcha.addEventListener('verified', (e) => {
-        console.log('verified event', {key: e.key});
+        console.log('verified event', {token: e.token});
     });
     signupCaptcha.addEventListener('error', (e) => {
         console.log('error event', {error: e.error});
@@ -229,7 +238,7 @@ The following methods allow for programmatic control, necessary only in case of 
 | `executeAsync()` | Triggers a verification request and receive a Promise which resolved with the token results or throws in case of errors. |
 | `reset()`        | Resets the hCaptcha which requires user to fill captcha again.                                                           |
 
-## Develop & Test
+## Commands
 
 * `yarn build`
   > Build a production version of the component.

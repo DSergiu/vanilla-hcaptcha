@@ -77,6 +77,7 @@ export class VanillaHCaptchaWebComponent extends HTMLElement {
 
         const renderConfig: VanillaHCaptchaRenderConfig = {
             sitekey: this.getAttribute('sitekey') || this.getAttribute('site-key'),
+            // @ts-ignore
             theme: this.getAttribute('theme'),
             // @ts-ignore
             size: this.getAttribute('size'),

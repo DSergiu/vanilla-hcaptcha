@@ -8,7 +8,7 @@
     "url": "https://github.com/DSergiu"
   },
   "scripts": {
-    "start": "serve",
+    "start": "serve -p 3001",
     "test": "echo Examples have no tests."
   },
   "dependencies": {

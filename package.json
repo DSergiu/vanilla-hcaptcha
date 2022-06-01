@@ -7,9 +7,7 @@
       "packages/*",
       "examples/*"
     ],
-    "nohoist": [
-      "vanilla-hcaptcha"
-    ]
+    "nohoist": [ "**/vanilla-hcaptcha" ]
   },
   "author": {
     "name": "Sergiu Danalachi <danalachi.sergiu@gmail.com>",

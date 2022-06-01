@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "alwaysStrict": false,
+    "allowJs": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationDir": ".",
+    "types": [
+      "@hcaptcha/types"
+    ]
+  },
+  "files": [
+    "src/hcaptcha.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

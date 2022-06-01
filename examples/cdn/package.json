@@ -1,7 +1,7 @@
 {
   "name": "@example/cdn",
   "version": "1.0.0",
-  "private": false,
+  "private": true,
   "license": "MIT",
   "author": {
     "name": "Sergiu Danalachi <danalachi.sergiu@gmail.com>",

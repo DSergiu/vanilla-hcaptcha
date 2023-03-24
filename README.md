@@ -30,7 +30,8 @@ Being a vanilla web component, it is relatively [easy](https://custom-elements-e
 mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See below some examples.
 
 * [Vue.JS](#vuejs)
-* [React](#reactjs)
+* [React](#reactjs-and-preact)
+* [Preact](#reactjs-and-preact)
 * [Angular 2+](#angular)
 * [Angular.JS](#angularjs)
 * [Vanilla](#vanillajs)
@@ -72,7 +73,7 @@ mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See 
     </template>
     ```
 
-### React.JS
+### React.JS and Preact
 
 > Example: display normal size hCaptcha with dark theme.
 

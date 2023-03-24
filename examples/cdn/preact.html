@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Demo hCaptcha Web Component - React</title>
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <title>Demo hCaptcha Web Component - Preact</title>
+    <script src="https://unpkg.com/preact/dist/preact.umd.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script src="https://unpkg.com/vanilla-hcaptcha" async defer></script>
-<!--    <script src="/node_modules/vanilla-hcaptcha/dist/index.min.js"></script>-->
+    <!--    <script src="/node_modules/vanilla-hcaptcha/dist/index.min.js"></script>-->
 </head>
 <body>
 
 <div id="example"></div>
 
+<script>
+    window.React = { createElement: preact.h }
+</script>
+
 <script type="text/babel">
-    class Example extends React.Component {
+    class Example extends preact.Component {
         constructor(props) {
             super(props);
             this.state = {
                 sitekey: "781559eb-513a-4bae-8d29-d4af340e3624",
                 token: "",
             };
-            this.captchaRef = React.createRef();
+            this.captchaRef = preact.createRef();
         }
 
         componentDidMount() {
@@ -51,7 +54,7 @@
         }
     }
 
-    ReactDOM.render(<Example />, document.getElementById('example'))
+    preact.render(<Example />, document.getElementById("example"))
 </script>
 
 </body>

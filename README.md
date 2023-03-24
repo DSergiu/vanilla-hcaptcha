@@ -4,7 +4,7 @@ It allows for easy integration with hCaptcha in many modern web frameworks.
 
 <img width="300px" src="https://assets-global.website-files.com/5c73e7ea3f8bb2a85d2781db/5c73e7ea3f8bb23b4c278261_hcaptcha-logo-landscape.svg" alt="hCaptcha logo" title="hCaptcha logo" />  
 
-**0** dependencies. **<1kb** gzipped. Integrates well with Vue.JS, React, Angular, etc.
+**0** dependencies. **<1kb** gzipped. Integrates well with Vue.JS, React, Preact, Angular, etc.
 
 [Install](#install) | [Usage](#usage) | [Attributes](#attributes) | [Events](#events) | [Methods](#methods)
 
@@ -27,10 +27,11 @@ Or via cdn:
 ## Usage
 
 Being a vanilla web component, it is relatively [easy](https://custom-elements-everywhere.com) to integrate in
-mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See below some examples.
+mainstream web frameworks such as: React, Preact, Vue.js, Angular, Stencil.js, etc. See below some examples.
 
 * [Vue.JS](#vuejs)
-* [React](#reactjs)
+* [React](#reactjs-and-preact)
+* [Preact](#reactjs-and-preact)
 * [Angular 2+](#angular)
 * [Angular.JS](#angularjs)
 * [Vanilla](#vanillajs)
@@ -72,7 +73,7 @@ mainstream web frameworks such as: React, Vue.js, Angular, Stencil.js, etc. See 
     </template>
     ```
 
-### React.JS
+### React.JS and Preact
 
 > Example: display normal size hCaptcha with dark theme.
 

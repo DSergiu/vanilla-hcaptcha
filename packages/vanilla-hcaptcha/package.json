@@ -44,6 +44,7 @@
     "vanilla.js",
     "vue",
     "vue.js",
+    "preact",
     "react",
     "react.js"
   ]

@@ -1,3 +1,6 @@
+⚠️This project was moved to https://github.com/hCaptcha/vanilla-hcaptcha.⚠️
+---
+
 # hCaptcha - Vanilla Web Component
 A Vanilla Web Component wrapper for [hCaptcha](https://docs.hcaptcha.com/).
 It allows for easy integration with hCaptcha in many modern web frameworks.

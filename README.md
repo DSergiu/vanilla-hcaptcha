@@ -1,4 +1,4 @@
-⚠️This project was moved to https://github.com/hCaptcha/vanilla-hcaptcha.⚠️
+⚠️This project was moved to [@hcaptcha/vanilla-hcaptcha](https://github.com/hCaptcha/vanilla-hcaptcha).⚠️
 ---
 
 # hCaptcha - Vanilla Web Component

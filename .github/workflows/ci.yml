@@ -23,6 +23,6 @@ jobs:
       - run: cp README.md packages/vanilla-hcaptcha
       - name: 'Publish'
         if: contains('refs/heads/master', github.ref)
-        run: lerna publish -y from-package
+        run: yarn lerna publish -y from-package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
